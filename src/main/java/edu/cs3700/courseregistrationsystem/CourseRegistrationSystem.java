@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
+// Update package name as needed
 package edu.cs3700.courseregistrationsystem;
 
-/**
- *
- * @author Rebekah
+/*
+ * Author:  
  */
+
 public class CourseRegistrationSystem {
 
     public static void main(String[] args) {

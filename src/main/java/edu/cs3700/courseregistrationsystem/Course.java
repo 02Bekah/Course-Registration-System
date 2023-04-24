@@ -1,3 +1,4 @@
+// Update package name as needed
 package edu.cs3700.courseregistrationsystem;
 
 /**
