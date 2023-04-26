@@ -1,4 +1,5 @@
-// Update package name as neededpackage edu.cs3700.courseregistrationsystem;
+// Update package name as needed
+package edu.cs3700.courseregistrationsystem;
 
 /**
  * Author: Rebekah Albrecht
