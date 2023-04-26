@@ -4,7 +4,7 @@
  * Author: Rebekah Albrecht
  */
 public class Instructor extends Person {
-    // Variable declaration
+    // Declare variables
     public Student[] advisees;
     
     // Full constructor
