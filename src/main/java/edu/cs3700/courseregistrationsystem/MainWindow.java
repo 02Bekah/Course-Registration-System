@@ -46,28 +46,33 @@ public class MainWindow extends JFrame{
         
         addProgramBtn = new JButton("Add Program");
         add(addProgramBtn);
-        addProgramBtn.addMouseListener(new btnMouseHandler());
+        addProgramBtn.addMouseListener(new btnMouseHandler(1));
         
         addStudentBtn = new JButton("Add Student");
         add(addStudentBtn);
-        addStudentBtn.addMouseListener(new btnMouseHandler());
+        addStudentBtn.addMouseListener(new btnMouseHandler(2));
         
         addInstructorBtn = new JButton("Add Instructor");
         add(addInstructorBtn);
-        addInstructorBtn.addMouseListener(new btnMouseHandler());
+        addInstructorBtn.addMouseListener(new btnMouseHandler(3));
         
         addCourseBtn = new JButton("Add Course");
         add(addCourseBtn);
-        addCourseBtn.addMouseListener(new btnMouseHandler());
+        addCourseBtn.addMouseListener(new btnMouseHandler(4));
     }
     
     private class btnMouseHandler implements MouseListener{
+        private int btnClickedNum;
+        
+        public btnMouseHandler(int clickedBtnNum){
+            btnClickedNum = clickedBtnNum;
+        }
         
         @Override
         public void mouseClicked(MouseEvent e) {
             var sender = e.getComponent();
             
-            String msg = getMessageText(sender);
+            String msg = getMessageText();
             JOptionPane.showMessageDialog(sender, msg);
         }
 
@@ -92,18 +97,15 @@ public class MainWindow extends JFrame{
             
         }
         
-        private String getMessageText(Component component){
-            JButton btn = (JButton)component;
-            String text = btn.getText();
-            
-            switch(text){
-                case "Add Program":
+        private String getMessageText(){
+            switch(btnClickedNum){
+                case 1:
                     return "Program Added";
-                case "Add Student":
+                case 2:
                     return "Student Added";
-                case "Add Instructor":
+                case 3:
                     return "Instructor Added";
-                case "Add Course":
+                case 4:
                     return "Course Added";
                 default:
                     return "How did you get this message";
