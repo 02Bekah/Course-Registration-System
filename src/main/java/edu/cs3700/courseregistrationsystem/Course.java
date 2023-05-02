@@ -14,7 +14,7 @@ class Course {
     public Instructor Instructor;
     public Student StudentList[];
 
-    public Course(String n, String p, String i){
+    public Course(String n, Program p, Intstructor i){
         setName(n);
         Program = p;
         Instructor = i;
