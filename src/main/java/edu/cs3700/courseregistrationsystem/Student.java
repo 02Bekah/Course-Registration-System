@@ -16,7 +16,7 @@ public class Student extends Person {
     public Student(String name, Date dob, Program program, Course[] courses, Date sDate, Instructor adv){
         Name = name;
         DateOfBirth = dob;
-        Program.Name = program;
+        CurrentProgram = program;
         CourseList = courses;
         startDate = sDate;
         advisor = adv;
@@ -24,7 +24,7 @@ public class Student extends Person {
     //Quick constructor
     public Student(String name, Program program, Instructor adv){
         Name = name;
-        Program.Name = program;
+        CurrentProgram = program;
         advisor = adv;
     }
     //Empty constructor
@@ -35,16 +35,14 @@ public class Student extends Person {
     //Add Course
     public void addCourse(Course course){
         Course[] c = new Course[CourseList.length + 1];
-        CourseList = c;
+        c = CourseList;
     }
     //Add Start Date
     public void addStartDate(Date date){
-        Date d = new Date();
-        startDate = d;
+        startDate = date;
     }
     //Add Advisor
     public void addAdvisor(Instructor instructor){
-        Instructor i = new Instructor();
-        advisor = i;
+        advisor = instructor;
     }
 }
