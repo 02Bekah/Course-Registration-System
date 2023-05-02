@@ -9,10 +9,10 @@ package edu.cs3700.courseregistrationsystem;
 import java.util.Scanner;
 class Course {
     private String name;
-    public String Program;
-    public int Prereq[] CourseList;
-    public String Instructor;
-    public int StudentList[] Student;
+    public Program Program;
+    public Course CourseList[];
+    public Instructor Instructor;
+    public Student StudentList[];
 
     public Course(String n, String p, String i){
         setName(n);
@@ -22,19 +22,20 @@ class Course {
     public String getname(){
             return (name);
     }
-    public void setName(String n){
+    private void setName(String n){
             n = name;
     }    
     
     public void addCourse(int index){
+        CourseList = new Course[index];
         Scanner input = new Scanner(System.in);
         System.out.println("Course Name: ");
-        name = input.Next();
+        String n = input.nextLine();
         System.out.println("Course Program: ");
-        Program = input.Next();
+        String p = input.nextLine();
         System.out.println("Course Instructor: ");
-        Instructor = input.Next();
-        CourseList[index] = new Course(name,Program,Instructor);
+        String i = input.nextLine();
+        CourseList[index] = new Course(n,p,i);
     }
     public void listStudent(int list){
         for(int i = 0; i <list; i++ )
