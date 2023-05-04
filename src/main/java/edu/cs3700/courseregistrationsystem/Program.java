@@ -24,7 +24,7 @@ public class Program {
         
         public int setType(String Type){
             if (Type.equalsIgnoreCase("traditional")|| 
-                    Type.equalsIgnoreCase("online")){
+                    Type.equalsIgnoreCase("online")|| Type.equalsIgnoreCase("unknown")){
                 this.Type = Type;
                 return 0;
             }
@@ -37,5 +37,14 @@ public class Program {
                 return 0;
             }
             return 1;
+        }
+        public Program(String Name, String College, String Type, int Num_credits){
+            this.Name = Name;
+            this.College = College;
+            setType(Type);
+            setNum_credits(Num_credits);
+        }
+        public Program(){
+            this("unknown", "unknown", "unknown", 0);
         }
     }
