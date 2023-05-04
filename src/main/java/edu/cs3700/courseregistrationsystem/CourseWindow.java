@@ -28,6 +28,8 @@ import javax.swing.JTextField;
  */
 public class CourseWindow extends JFrame{
     private final JTextField text1;
+    private final JTextField text2;
+    private final JTextField text3;
     private final JLabel label1;
     private final JLabel label2;
     private final JLabel label3;
@@ -46,9 +48,11 @@ public class CourseWindow extends JFrame{
         plainFont = new Font("Serif", Font.PLAIN, 14);
        
         label1 = new JLabel("Name of Course:");
-        text1 = new JTextField(16);
+        text1 = new JTextField(20);
         label2 = new JLabel("Program:");
+        text2 = new JTextField(20);
         label3 = new JLabel("Instrutor:");
+        text3 = new JTextField(20);
         b = new JButton("Submit");
             }
 }
