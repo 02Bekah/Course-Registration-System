@@ -31,13 +31,14 @@ public class Instructor extends Person {
     
     // Method to add a course
     public void addCourse(Course course) {
-        Course[] temp = new Course[CourseList.Count + 1];
+        Course[] temp = new Course[CourseList.length + 1];
         CourseList = temp;
     } // End method addCourse
     
     // Method to add an advissee
     public void addAdvisee(Student student) {
-        Student[] temp = new Student[advisees.Count + 1];
+        Student[] temp = new Student[advisees.length + 1];
         advisees = temp;
     } // End method addAdvisee
+    
 }

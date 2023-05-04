@@ -14,7 +14,7 @@ class Course {
     public Instructor Instructor;
     public Student StudentList[];
 
-    public Course(String n, String p, String i){
+    public Course(String n, Program p, Instructor i){
         setName(n);
         Program = p;
         Instructor = i;
@@ -26,20 +26,14 @@ class Course {
             n = name;
     }    
     
-    public void addCourse(int index){
-        CourseList = new Course[index];
-        Scanner input = new Scanner(System.in);
-        System.out.println("Course Name: ");
-        String n = input.nextLine();
-        System.out.println("Course Program: ");
-        String p = input.nextLine();
-        System.out.println("Course Instructor: ");
-        String i = input.nextLine();
-        CourseList[index] = new Course(n,p,i);
-    }
+         public void addCourse(Course course) {
+        Course[] temp = new Course[CourseList.Count + 1];
+        CourseList = temp;
+         }
+    
     public void listStudent(int list){
         for(int i = 0; i <list; i++ )
-        System.out.println("Students: " + Student[i]);
+        System.out.println("Students: " + StudentList[i]);
     }
     public void listCourse(int list){
         for(int index = 0; index < list;index++)
