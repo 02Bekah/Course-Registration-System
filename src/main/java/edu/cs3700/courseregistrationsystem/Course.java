@@ -14,7 +14,7 @@ class Course {
     public Instructor Instructor;
     public Student StudentList[];
 
-    public Course(String n, Program p, Intstructor i){
+    public Course(String n, Program p, Instructor i){
         setName(n);
         Program = p;
         Instructor = i;
@@ -39,7 +39,7 @@ class Course {
     }
     public void listStudent(int list){
         for(int i = 0; i <list; i++ )
-        System.out.println("Students: " + Student[i]);
+        System.out.println("Students: " + StudentList[i]);
     }
     public void listCourse(int list){
         for(int index = 0; index < list;index++)
