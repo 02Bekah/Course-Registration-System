@@ -107,7 +107,7 @@ public class Date {
     public int setYear(int year) {
         // year validation
         // Assumes years before 2000 are irrelevant and the system will be used indefinitely far in the future
-        if (year >= 2000) {
+        if (year >= 1800) {
             this.year = year;
             return 0;
         } else {
