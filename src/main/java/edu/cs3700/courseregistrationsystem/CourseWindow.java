@@ -54,5 +54,21 @@ public class CourseWindow extends JFrame{
         label3 = new JLabel("Instrutor:");
         text3 = new JTextField(20);
         b = new JButton("Submit");
+        
+        JFrame frame = new JFrame("Course Window");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 200);
+
+        frame.add(label1);
+        frame.add(text1);
+        frame.add(label2);
+        frame.add(text2);
+        frame.add(label3);
+        frame.add(text3);
+        frame.setVisible(true);
+
+        text1.setText(Course.CourseList[]);
+        text2.setText(CourseList.Program);
+        text3.setText(CourseList.Instructor);
             }
 }
