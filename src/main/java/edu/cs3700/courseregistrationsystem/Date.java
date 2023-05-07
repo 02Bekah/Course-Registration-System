@@ -118,4 +118,9 @@ public class Date {
     public int getYear() {
         return year;
     } // End method getYear
+    
+    public String toString() {
+        // Print date in mm/dd/yyyy format
+        return getMonth() + "/" + getDay() + "/" + getYear();
+    }
 }
