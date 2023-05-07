@@ -31,7 +31,13 @@ public class Instructor extends Person {
     
     // Method to add a course
     public void addCourse(Course course) {
+        // Increase size by creating temp array
         Course[] temp = new Course[CourseList.length + 1];
+        // Copy into temp array
+        temp = CourseList.clone();
+        // Add new course to temp array
+        temp[CourseList.length] = course;
+        // Set temp as CourseList
         CourseList = temp;
     } // End method addCourse
     
@@ -40,5 +46,10 @@ public class Instructor extends Person {
         Student[] temp = new Student[advisees.length + 1];
         advisees = temp;
     } // End method addAdvisee
+    
+    // toString method used to select individual instructor from search results
+    public String toString() {
+        return Name + ", DOB: " + DateOfBirth.toString();
+    }
     
 }
