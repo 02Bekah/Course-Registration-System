@@ -31,6 +31,12 @@ public class MainWindow extends JFrame{
     private final JButton addStudentBtn;
     private final JButton addInstructorBtn;
     private final JButton addCourseBtn;
+    private final JButton searchStudentBtn;
+    private final JButton searchInstructorBtn;
+    private final JButton searchCourseBtn;
+    private final JButton registerStudentBtn;
+    private final JButton registerInstructorBtn;
+    private final JButton assignAdvisorBtn;
     private Font plainFont;
     private Font boldFont;
     private Font italicFont;
@@ -59,6 +65,30 @@ public class MainWindow extends JFrame{
         addCourseBtn = new JButton("Add Course");
         add(addCourseBtn);
         addCourseBtn.addMouseListener(new btnMouseHandler(4));
+        
+        searchStudentBtn = new JButton("Search for Student");
+        add(searchStudentBtn);
+        searchStudentBtn.addMouseListener(new btnMouseHandler(5));
+        
+        searchInstructorBtn = new JButton("Search for Instructor");
+        add(searchInstructorBtn);
+        searchInstructorBtn.addMouseListener(new btnMouseHandler(6));
+        
+        searchCourseBtn = new JButton("Search for Course");
+        add(searchCourseBtn);
+        searchCourseBtn.addMouseListener(new btnMouseHandler(7));
+        
+        registerStudentBtn = new JButton("Register a Student For a Course");
+        add(registerStudentBtn);
+        registerStudentBtn.addMouseListener(new btnMouseHandler(8));
+        
+        registerInstructorBtn = new JButton("Register an Instructor For a Course");
+        add(registerInstructorBtn);
+        registerInstructorBtn.addMouseListener(new btnMouseHandler(9));
+        
+        assignAdvisorBtn = new JButton("Assign an Advisor To a Student");
+        add(assignAdvisorBtn);
+        assignAdvisorBtn.addMouseListener(new btnMouseHandler(10));
     }
     
     private class btnMouseHandler implements MouseListener{
@@ -98,6 +128,14 @@ public class MainWindow extends JFrame{
         }
         
         private String getMessageText(){
+            // Initialize variables with default values
+            String instructorName = "", courseName = "";
+            int selection = 0;
+            Instructor[] instructorSearchResults = null;
+            Instructor instructor = null;
+            Course[] courseResults = null;
+            Course course = null;
+        
             switch(btnClickedNum){
                 case 1:
                     return "Program Added";
@@ -107,6 +145,59 @@ public class MainWindow extends JFrame{
                     return "Instructor Added";
                 case 4:
                     return "Course Added";
+                case 5:
+                    return "Student found";
+                case 6:
+                    // Get search name from user
+                    instructorName = JOptionPane.showInputDialog("Type an Instructor's Name: ");
+                    // Get array of possible instructors matching the search name
+                    instructorSearchResults = CourseRegistrationSystem.searchForInstructor(instructorName);
+                    
+                    if (instructorSearchResults.length == 0) {
+                        // No results were found
+                        JOptionPane.showMessageDialog(rootPane, instructorName);
+                    } else {
+                        // Open InstructorWindow as instructorSearchResults[0]
+                        InstructorWindow instructorWindow = new InstructorWindow(instructorSearchResults);
+                        // Open InstructorWindow to display information
+                        // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
+                        instructorWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        instructorWindow.setSize(900, 900);
+                        instructorWindow.setVisible(true);
+                    }
+                    
+                    return "";
+                    
+                case 7:
+                    return "Course found";
+                case 8:
+                    return "Student registered";
+                case 9:
+                    // Get instructor name from user
+                    instructorName = JOptionPane.showInputDialog("Type an Instructor's Name: ");
+                    // Get array of possible instructors matching the search name
+                    instructorSearchResults = CourseRegistrationSystem.searchForInstructor(instructorName);
+                    
+                    if (instructorSearchResults.length == 0) {
+                        // No results were found
+                        JOptionPane.showMessageDialog(null, instructorName + " was not found.");
+                    } else if (instructorSearchResults.length > 1) {
+                        // If multiple instructors match the search name, ask the user to pick one
+                        selection = JOptionPane.showOptionDialog(null, "Select one of the following instructors: ", "Instructor Search", WIDTH, HEIGHT, null, instructorSearchResults,null);
+                        instructor = instructorSearchResults[selection];
+                    } else {
+                        // If only one instructor matches the search name, set instructor
+                        instructor = instructorSearchResults[0];
+                    }
+                    
+                    // Get instructor name from user
+                    courseName = JOptionPane.showInputDialog("Type the Name of a Course: ");
+                    // Search for course
+                    // Add course
+                    instructor.addCourse(course);
+                    return "";
+                case 10:
+                    return "Advisor assigned to student";
                 default:
                     return "How did you get this message";
             }
