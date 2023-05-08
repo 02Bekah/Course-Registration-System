@@ -31,14 +31,20 @@ public class Instructor extends Person {
     
     // Method to add a course
     public void addCourse(Course course) {
-        // Increase size by creating temp array
-        Course[] temp = new Course[CourseList.length + 1];
-        // Copy into temp array
-        temp = CourseList.clone();
-        // Add new course to temp array
-        temp[CourseList.length] = course;
-        // Set temp as CourseList
-        CourseList = temp;
+        if (CourseList != null) {
+            // Increase size by creating temp array
+            Course[] temp = new Course[CourseList.length + 1];
+            // Copy into temp array
+            for (int i=0; i<CourseList.length; i++) {
+                temp[i] = CourseList[i];
+            }
+            // Add new course to temp array
+            temp[CourseList.length] = course;
+            // Set temp as CourseList
+            CourseList = temp;
+        } else {
+            CourseList = new Course[] {course};
+        }
     } // End method addCourse
     
     // Method to add an advissee
