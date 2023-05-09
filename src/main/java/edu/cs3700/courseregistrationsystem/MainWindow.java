@@ -132,6 +132,7 @@ public class MainWindow extends JFrame{
             String instructorName = "", courseName = "";
             int selection = 0;
             Instructor[] instructorSearchResults = null;
+            Course[] courseSearchResults = null;
             Instructor instructor = null;
             Course[] courseResults = null;
             Course course = null;
@@ -169,7 +170,26 @@ public class MainWindow extends JFrame{
                     return "";
                     
                 case 7:
-                    return "Course found";
+                     // Get search name from user
+                    courseName = JOptionPane.showInputDialog("Type a Course Name: ");
+                    // Get array of possible courses matching the search name
+                    courseSearchResults = CourseRegistrationSystem.searchForCourse(courseName);
+                    
+                    if (courseSearchResults.length == 0) {
+                        // No results were found
+                        JOptionPane.showMessageDialog(rootPane, courseName);
+                    } else {
+                        // Open InstructorWindow as courseSearchResults[0]
+                        CourseWindow CourseWindow = new CourseWindow(courseSearchResults);
+                        // Open Course Window to display information
+                        // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
+                        CourseWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        CourseWindow.setSize(900, 900);
+                        CourseWindow.setVisible(true);
+                    }
+                    
+                    return "";
+                    
                 case 8:
                     return "Student registered";
                 case 9:
