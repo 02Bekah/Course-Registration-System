@@ -78,38 +78,56 @@ public class CourseRegistrationSystem {
         for (int i=0; i<co; i++) {
             instructorSearchResults[i] = searchResults[i];
         }
-        
         return instructorSearchResults;
         
-        } // End method searchForInstructor
+    } // End method searchForInstructor
     
-        public static Course[] searchForCourse(String name) {
-        // Array of instructors that could match the search name
+    public static Course[] searchForCourse(String name) {
+        // Array of courses that could match the search name
         Course[] searchResults = new Course[courses.length];
         // Counter for courseSearchResults
         int co = 0;
         
         for(Course inst: courses) {
             if (inst instanceof Course && inst.name.contains(name)) {
-                // Add instructor to list of search results
+                // Add course to list of search results
                 searchResults[co] = inst;
                 // Update counter
                 co += 1;
             }
         }
         
-        // Create a condensed Instructor array without excess space
+        // Create a condensed Course array without excess space
         Course[] courseSearchResults = new Course[co];
-        // Copy search results into instructorSearchResults
+        // Copy search results into courseSearchResults
         System.arraycopy(searchResults, 0, courseSearchResults, 0, co);
         
         return courseSearchResults;
+    } // End method searchForCourse
         
-        } // End method searchForCourse
+    public static Student[] searchForStudent(String name) {
+        // Array of instructors that could match the search name
+        Student[] searchResults = new Student[students.length];
+        // Counter for instructorSearchResults
+        int co = 0;
         
+        for(Student inst: students) {
+            if (inst instanceof Student && inst.Name.contains(name)) {
+                // Add student to list of search results
+                searchResults[co] = inst;
+                // Update counter
+                co += 1;
+            }
+        }
         
-    //TODO:
-    // Add student search method
-    // Add course search method
+        // Create a condensed Student array without excess space
+        Student[] studentSearchResults = new Student[co];
+        // Copy search results into studenSearchResults
+        for (int i=0; i<co; i++) {
+            studentSearchResults[i] = searchResults[i];
+        }
+        
+        return studentSearchResults;
+    } // End method searchForStudent
     
 } // End class CourseRegistrationSystem
