@@ -49,11 +49,24 @@ public class Instructor extends Person {
     
     // Method to add an advissee
     public void addAdvisee(Student student) {
-        Student[] temp = new Student[advisees.length + 1];
-        advisees = temp;
+        if (advisees != null) {
+            // Increase size by creating temp array
+            Student[] temp = new Student[advisees.length + 1];
+            // Copy into temp array
+            for (int i=0; i<advisees.length; i++) {
+                temp[i] = advisees[i];
+            }
+            // Add new course to temp array
+            temp[advisees.length] = student;
+            // Set temp as CourseList
+            advisees = temp;
+        } else {
+            advisees = new Student[] {student};
+        }
     } // End method addAdvisee
     
     // toString method used to select individual instructor from search results
+    @Override
     public String toString() {
         return Name + ", DOB: " + DateOfBirth.toString();
     }
