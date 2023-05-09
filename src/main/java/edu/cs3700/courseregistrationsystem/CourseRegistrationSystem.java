@@ -83,6 +83,31 @@ public class CourseRegistrationSystem {
         
         } // End method searchForInstructor
     
+        public static Course[] searchForCourse(String name) {
+        // Array of instructors that could match the search name
+        Course[] searchResults = new Course[courses.length];
+        // Counter for courseSearchResults
+        int co = 0;
+        
+        for(Course inst: courses) {
+            if (inst instanceof Course && inst.name.contains(name)) {
+                // Add instructor to list of search results
+                searchResults[co] = inst;
+                // Update counter
+                co += 1;
+            }
+        }
+        
+        // Create a condensed Instructor array without excess space
+        Course[] courseSearchResults = new Course[co];
+        // Copy search results into instructorSearchResults
+        System.arraycopy(searchResults, 0, courseSearchResults, 0, co);
+        
+        return courseSearchResults;
+        
+        } // End method searchForCourse
+        
+        
     //TODO:
     // Add student search method
     // Add course search method
