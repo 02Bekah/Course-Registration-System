@@ -7,7 +7,7 @@ package edu.cs3700.courseregistrationsystem;
 
 // Course Class for Project
 import java.util.Scanner;
-class Course {
+public class Course {
     String name;
     public Program Program;
     public Course CourseList[];
@@ -23,7 +23,7 @@ class Course {
             return (name);
     }
     private void setName(String n){
-            n = name;
+            name = n;
     }    
     
          public void addCourse(Course course) {
