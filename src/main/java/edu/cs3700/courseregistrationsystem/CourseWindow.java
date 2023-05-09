@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -38,8 +39,8 @@ public class CourseWindow extends JFrame{
     private Font boldFont;
     private Font italicFont;    
             
-            public CourseWindow(){
-            super("Add Course Window");
+            public CourseWindow(Course[] courseSearchResults){
+            super("Display Course Window");
             FlowLayout fl = new FlowLayout();
             setLayout(fl);
         
@@ -67,8 +68,9 @@ public class CourseWindow extends JFrame{
         frame.add(text3);
         frame.setVisible(true);
 
-        text1.setText(Course.CourseList[]);
-        text2.setText(CourseList.Program);
-        text3.setText(CourseList.Instructor);
+      
             }
+    
+            
+            
 }
