@@ -232,9 +232,11 @@ public class MainWindow extends JFrame{
                         }
                         
                         if (courseSearchResults.length >= 1)
-                        // Add course
                         try {
+                            // Add course to instructor courseList
                             instructor.addCourse(course);
+                            // Set instructor as Instructor for course
+                            course.Instructor=instructor;
                             JOptionPane.showMessageDialog(null, instructor.Name + " was successfully registered as an instructor for " + course.getname());
                         }
                         catch(Exception e) {
