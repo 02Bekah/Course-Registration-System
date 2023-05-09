@@ -8,7 +8,7 @@ package edu.cs3700.courseregistrationsystem;
 // Course Class for Project
 import java.util.Scanner;
 class Course {
-    private String name;
+    String name;
     public Program Program;
     public Course CourseList[];
     public Instructor Instructor;
@@ -27,9 +27,22 @@ class Course {
     }    
     
          public void addCourse(Course course) {
-        Course[] temp = new Course[CourseList.Count + 1];
-        CourseList = temp;
-         }
+        if (CourseList != null) {
+            // Increase size by creating temp array
+            Course[] temp = new Course[CourseList.length + 1];
+            // Copy into temp array
+            for (int i=0; i<CourseList.length; i++) {
+                temp[i] = CourseList[i];
+            }
+            // Add new course to temp array
+            temp[CourseList.length] = course;
+            // Set temp as CourseList
+            CourseList = temp;
+        } else {
+            CourseList = new Course[] {course};
+        }
+    } // End method addCourse
+
     
     public void listStudent(int list){
         for(int i = 0; i <list; i++ )
