@@ -129,13 +129,15 @@ public class MainWindow extends JFrame{
         
         private String getMessageText(){
             // Initialize variables with default values
-            String instructorName = "", courseName = "";
+            String instructorName = "", courseName = "", studentName = "";
             int selection = 0;
             Instructor[] instructorSearchResults = null;
             Course[] courseSearchResults = null;
             Instructor instructor = null;
             Course[] courseResults = null;
             Course course = null;
+            Student[] studentSearchResults = null;
+            Student student = null;
         
             switch(btnClickedNum){
                 case 1:
@@ -231,16 +233,17 @@ public class MainWindow extends JFrame{
                             }
                         }
                         
-                        if (courseSearchResults.length >= 1)
-                        try {
-                            // Add course to instructor courseList
-                            instructor.addCourse(course);
-                            // Set instructor as Instructor for course
-                            course.Instructor=instructor;
-                            JOptionPane.showMessageDialog(null, instructor.Name + " was successfully registered as an instructor for " + course.getname());
-                        }
-                        catch(Exception e) {
-                            JOptionPane.showMessageDialog(null, "Something went wrong. Please try again.", "Course Registration", JOptionPane.ERROR_MESSAGE);
+                        if (courseSearchResults.length >= 1) {
+                            try {
+                                // Add course to instructor courseList
+                                instructor.addCourse(course);
+                                // Set instructor as Instructor for course
+                                course.Instructor=instructor;
+                                JOptionPane.showMessageDialog(null, instructor.Name + " was successfully registered as an instructor for " + course.getname());
+                            }
+                            catch(Exception e) {
+                                JOptionPane.showMessageDialog(null, "Something went wrong. Please try again.", "Course Registration", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
                     }
                     
@@ -253,10 +256,51 @@ public class MainWindow extends JFrame{
                     
                     if (instructorSearchResults.length == 0) {
                         // No results were found
-                        JOptionPane.showMessageDialog(rootPane, instructorName + " was not found.", "Instructor Search", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, instructorName + " was not found.", "Instructor Search", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        if (instructorSearchResults.length > 1) {
+                            // If multiple instructors match the search name, ask the user to pick one
+                            selection = JOptionPane.showOptionDialog(null, "Select one of the following instructors: ", "Instructor Search", WIDTH, HEIGHT, null, instructorSearchResults,null);
+                            instructor = instructorSearchResults[selection];
+                        } else {
+                            // If only one instructor matches the search name, set instructor
+                            instructor = instructorSearchResults[0];
+                        }
+                        
+                        // Get student name from user
+                        studentName = JOptionPane.showInputDialog(null, "Type a Student's Name:");
+                        // Get array of possible students matching the search name
+                        studentSearchResults = CourseRegistrationSystem.searchForStudent(studentName);
+                        
+                        if (studentSearchResults.length == 0) {
+                            // No results were found
+                            JOptionPane.showMessageDialog(null, studentName + " was not found", "Student Search", JOptionPane.WARNING_MESSAGE);
+                        } else {
+                            if (studentSearchResults.length > 1) {
+                                // If multiple students match the search name, ask the user to pick one
+                                selection = JOptionPane.showOptionDialog(null, "Select one of the following students:", "Student Search", WIDTH, HEIGHT, null,studentSearchResults, null);
+                                student = studentSearchResults[selection];
+                            } else {
+                                // If only one student matches the search name, set student
+                                student = studentSearchResults[0];
+                            }
+                        }
+                        
+                        if (studentSearchResults.length >= 1) {
+                            try {
+                                // Add student to list of instructor advisees
+                                instructor.addAdvisee(student);
+                                // Set instructor as advisor for student
+                                student.advisor=instructor;
+                                JOptionPane.showMessageDialog(null, instructor.Name + " was successfully added as an advisor for " + student.Name);
+                            }
+                            catch(Exception e) {
+                                JOptionPane.showMessageDialog(null, "Something went wrong. Please try again.", "Add advior", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
                     } 
                     
-                    
+                    return "";
                 default:
                     return "How did you get this message";
             }
