@@ -48,22 +48,22 @@ public class InstructorWindow extends JFrame{
         JLabel[] instructorDOBLbls = new JLabel[searchResults.length];
         
         // Initialize title labels
-        instructorNameTitleLbl = new JLabel("Name: ");
+        instructorNameTitleLbl = new JLabel("Name         ", SwingConstants.LEFT);
         instructorNameTitleLbl.setFont(instructorTitleFont);
-        instructorDOBTitleLbl = new JLabel("Date of Birth: ");
+        instructorDOBTitleLbl = new JLabel("   Date of Birth ", SwingConstants.RIGHT);
         instructorDOBTitleLbl.setFont(instructorTitleFont);
         
+        add(instructorNameTitleLbl);
+        add(instructorDOBTitleLbl);
+        
         for (int i=0; i<searchResults.length; i++) {
-            // Name title label
-            add(instructorNameTitleLbl);
             // Initialize instructor name label
-            instructorNameLbls[i] = new JLabel(searchResults[i].Name, SwingConstants.CENTER);
+            instructorNameLbls[i] = new JLabel(searchResults[i].Name, SwingConstants.LEFT);
             instructorNameLbls[i].setFont(instructorInfoFont);
             add(instructorNameLbls[i]);
-            // Date of birth title label
-            add(instructorDOBTitleLbl);
+            
             // Initialize instructor date of birth label
-            instructorDOBLbls[i] = new JLabel(searchResults[i].DateOfBirth.toString(),SwingConstants.CENTER);
+            instructorDOBLbls[i] = new JLabel(searchResults[i].DateOfBirth.toString(),SwingConstants.RIGHT);
             instructorDOBLbls[i].setFont(instructorInfoFont);
             add(instructorDOBLbls[i]);
         }
