@@ -165,7 +165,7 @@ public class MainWindow extends JFrame{
                         // Open InstructorWindow to display information
                         // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
                         instructorWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        instructorWindow.setSize(900, 900);
+                        instructorWindow.setSize(200, 400);
                         instructorWindow.setVisible(true);
                     }
                     
