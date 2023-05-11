@@ -127,16 +127,172 @@ public class MainWindow extends JFrame{
             
         }
         
+        public void findInstructors() {
+            String instructorName;
+            Instructor[] instructorSearchResults;
+            
+            // Get search name from user
+            instructorName = JOptionPane.showInputDialog("Type an Instructor's Name: ");
+            // Get array of possible instructors matching the search name
+            instructorSearchResults = CourseRegistrationSystem.searchForInstructor(instructorName);
+                    
+            if (instructorSearchResults.length == 0) {
+                // No results were found
+                JOptionPane.showMessageDialog(rootPane, instructorName + " was not found.", "Instructor Search", JOptionPane.WARNING_MESSAGE);
+            } else {
+                // Open InstructorWindow as instructorSearchResults[0]
+                InstructorWindow instructorWindow = new InstructorWindow(instructorSearchResults);
+                // Open InstructorWindow to display information
+                // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
+                instructorWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                instructorWindow.setSize(200, 400);
+                instructorWindow.setVisible(true);
+            }
+        }
+        
+        public Instructor findInstructor() {
+            String instructorName;
+            Instructor[] instructorSearchResults;
+            Instructor instructor = null;
+            int selection;
+            
+            // Get search name from user
+            instructorName = JOptionPane.showInputDialog("Type an Instructor's Name: ");
+            // Get array of possible instructors matching the search name
+            instructorSearchResults = CourseRegistrationSystem.searchForInstructor(instructorName);
+                    
+            switch(instructorSearchResults.length) {
+                case 0:
+                    // No results were found
+                    JOptionPane.showMessageDialog(rootPane, instructorName + " was not found.", "Instructor Search", JOptionPane.WARNING_MESSAGE);
+                    break;
+                case 1:
+                    // If only one instructor matches the search name, set instructor
+                    instructor = instructorSearchResults[0];
+                    break;
+                default:
+                    // If multiple instructors match the search name, ask the user to pick one
+                    selection = JOptionPane.showOptionDialog(null, "Select one of the following instructors: ", "Instructor Search", WIDTH, HEIGHT, null, instructorSearchResults,null);
+                    instructor = instructorSearchResults[selection];
+            }
+            
+            return instructor;
+        }
+        
+        public void findCourses() {
+            String courseName;
+            Course[] courseSearchResults;
+            
+            // Get search name from user
+            courseName = JOptionPane.showInputDialog("Type a Course Name: ");
+            // Get array of possible courses matching the search name
+            courseSearchResults = CourseRegistrationSystem.searchForCourse(courseName);
+                    
+            if (courseSearchResults.length == 0) {
+                // No results were found
+                JOptionPane.showMessageDialog(rootPane, courseName + " was not found", "Course Search", JOptionPane.WARNING_MESSAGE);
+            } else {
+                // Open InstructorWindow as courseSearchResults[0]
+                CourseWindow CourseWindow = new CourseWindow(courseSearchResults);
+                // Open Course Window to display information
+                // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
+                CourseWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                CourseWindow.setSize(900, 900);
+                CourseWindow.setVisible(true);
+            }
+        }
+        
+        public Course findCourse() {
+            String courseName;
+            Course[] courseSearchResults;
+            Course course = null;
+            int selection;
+            
+            // Get course name from user
+            courseName = JOptionPane.showInputDialog("Type the Name of a Course: ");
+            // Get array of possible courses matching the search name
+            courseSearchResults = CourseRegistrationSystem.searchForCourse(courseName);
+            
+            switch(courseSearchResults.length) {
+                case 0:
+                    // No results were found
+                    JOptionPane.showMessageDialog(null, courseName + " was not found", "Course Search", JOptionPane.WARNING_MESSAGE);
+                    break;
+                case 1:
+                    // If only one course matches the search name, set course
+                    course = courseSearchResults[0];
+                    break;
+                default:
+                    // If multiple courses match the search name, ask the user to pick one
+                    selection = JOptionPane.showOptionDialog(null, "Select one of the following courses: ", "Course Search", WIDTH, HEIGHT, null, courseSearchResults,null);
+                    course = courseSearchResults[selection];
+            }
+            
+            return course;
+        }
+        
+        public void findStudents() {
+            String studentName;
+            Student[] studentSearchResults;
+            
+            // Get search name from user
+            studentName = JOptionPane.showInputDialog("Type The Student's Name: ");
+            // Get array of possible students matching the search name
+            studentSearchResults = CourseRegistrationSystem.searchForStudent(studentName);
+                    
+            if (studentSearchResults.length == 0) {
+                // No results were found
+                JOptionPane.showMessageDialog(null, studentName + " was not found", "Student Search", JOptionPane.WARNING_MESSAGE);
+            } else {
+                // Open studentWindow as studentSearchResults[0]
+                StudentWindow StudentWindow = new StudentWindow(studentSearchResults);
+                // Open student Window to display information
+                // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
+                StudentWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                StudentWindow.setSize(900, 900);
+                StudentWindow.setVisible(true);
+            }
+        }
+        
+        public Student findStudent() {
+            String studentName;
+            Student[] studentSearchResults;
+            Student student = null;
+            int selection;
+            
+            // Get student name from user
+            studentName = JOptionPane.showInputDialog("Type the Name of a Student: ");
+            // Get array of possible students matching the search name
+            studentSearchResults = CourseRegistrationSystem.searchForStudent(studentName);
+            
+            switch(studentSearchResults.length) {
+                case 0:
+                    // No results were found
+                    JOptionPane.showMessageDialog(null, studentName + " was not found", "Course Search", JOptionPane.WARNING_MESSAGE);
+                    break;
+                case 1:
+                    // If only one student matches the search name, set student
+                    student = studentSearchResults[0];
+                    break;
+                default:
+                    // If multiple students match the search name, ask the user to pick one
+                    selection = JOptionPane.showOptionDialog(null, "Select one of the following students: ", "Student Search", WIDTH, HEIGHT, null, studentSearchResults,null);
+                    student = studentSearchResults[selection];
+            }
+            
+            return student;
+        }
+        
         private String getMessageText(){
             // Initialize variables with default values
-            String instructorName = "", courseName = "", studentName = "";
-            int selection = 0;
-            Instructor[] instructorSearchResults = null;
-            Course[] courseSearchResults = null;
+            //String instructorName = "", courseName = "", studentName = "";
+            //int selection = 0;
+            //Instructor[] instructorSearchResults = null;
+            //Course[] courseSearchResults = null;
             Instructor instructor = null;
-            Course[] courseResults = null;
+            //Course[] courseResults = null;
             Course course = null;
-            Student[] studentSearchResults = null;
+            //Student[] studentSearchResults = null;
             Student student = null;
         
             switch(btnClickedNum){
@@ -149,158 +305,52 @@ public class MainWindow extends JFrame{
                 case 4:
                     return "Course Added";
                 case 5:
-                    return "Student found";
+                    return "Student Search Completed";
                 case 6:
-                    // Get search name from user
-                    instructorName = JOptionPane.showInputDialog("Type an Instructor's Name: ");
-                    // Get array of possible instructors matching the search name
-                    instructorSearchResults = CourseRegistrationSystem.searchForInstructor(instructorName);
-                    
-                    if (instructorSearchResults.length == 0) {
-                        // No results were found
-                        JOptionPane.showMessageDialog(rootPane, instructorName + " was not found.", "Instructor Search", JOptionPane.WARNING_MESSAGE);
-                    } else {
-                        // Open InstructorWindow as instructorSearchResults[0]
-                        InstructorWindow instructorWindow = new InstructorWindow(instructorSearchResults);
-                        // Open InstructorWindow to display information
-                        // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
-                        instructorWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        instructorWindow.setSize(200, 400);
-                        instructorWindow.setVisible(true);
-                    }
-                    
-                    return "";
-                    
+                    findInstructors();
+                    return "Instructor Search Completed";
                 case 7:
-                     // Get search name from user
-                    courseName = JOptionPane.showInputDialog("Type a Course Name: ");
-                    // Get array of possible courses matching the search name
-                    courseSearchResults = CourseRegistrationSystem.searchForCourse(courseName);
-                    
-                    if (courseSearchResults.length == 0) {
-                        // No results were found
-                        JOptionPane.showMessageDialog(rootPane, courseName);
-                    } else {
-                        // Open InstructorWindow as courseSearchResults[0]
-                        CourseWindow CourseWindow = new CourseWindow(courseSearchResults);
-                        // Open Course Window to display information
-                        // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
-                        CourseWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        CourseWindow.setSize(900, 900);
-                        CourseWindow.setVisible(true);
-                    }
-                    
-                    return "";
-                    
+                     findCourses();
+                    return "Course Search Completed";
                 case 8:
                     return "Student registered";
                 case 9:
                     // Register an instructor with a course
-                    // Get instructor name from user
-                    instructorName = JOptionPane.showInputDialog("Type an Instructor's Name: ");
-                    // Get array of possible instructors matching the search name
-                    instructorSearchResults = CourseRegistrationSystem.searchForInstructor(instructorName);
                     
-                    if (instructorSearchResults.length == 0) {
-                        // No results were found
-                        JOptionPane.showMessageDialog(rootPane, instructorName + " was not found.", "Instructor Search", JOptionPane.WARNING_MESSAGE);
-                    } else {
-                        if (instructorSearchResults.length > 1) {
-                            // If multiple instructors match the search name, ask the user to pick one
-                            selection = JOptionPane.showOptionDialog(null, "Select one of the following instructors: ", "Instructor Search", WIDTH, HEIGHT, null, instructorSearchResults,null);
-                            instructor = instructorSearchResults[selection];
-                        } else {
-                            // If only one instructor matches the search name, set instructor
-                            instructor = instructorSearchResults[0];
+                    instructor = findInstructor();
+                    course = findCourse();
+                    if (instructor != null && course != null) {
+                        try {
+                            // Add course to instructor courseList
+                            instructor.addCourse(course);
+                            // Set instructor as Instructor for course
+                            course.Instructor=instructor;
+                            
+                            return instructor.Name + " was successfully registered as the instructor for " + course.getname();
                         }
-                        
-                        // Get course name from user
-                        courseName = JOptionPane.showInputDialog("Type the Name of a Course: ");
-                        // Get array of possible courses matching the search name
-                        courseSearchResults = CourseRegistrationSystem.searchForCourse(courseName);
-
-                        if (courseSearchResults.length == 0) {
-                            // No results were found
-                            JOptionPane.showMessageDialog(null, courseName + " was not found.");
-                        } else {
-                            if (courseSearchResults.length > 1) {
-                                // If multiple courses match the search name, ask the user to pick one
-                                selection = JOptionPane.showOptionDialog(null, "Select one of the following instructors: ", "Instructor Search", WIDTH, HEIGHT, null, instructorSearchResults,null);
-                                course = courseSearchResults[selection];
-                            } else {
-                                // If only one course matches the search name, set course
-                                course = courseSearchResults[0];
-                            }
-                        }
-                        
-                        if (courseSearchResults.length >= 1) {
-                            try {
-                                // Add course to instructor courseList
-                                instructor.addCourse(course);
-                                // Set instructor as Instructor for course
-                                course.Instructor=instructor;
-                                JOptionPane.showMessageDialog(null, instructor.Name + " was successfully registered as an instructor for " + course.getname());
-                            }
-                            catch(Exception e) {
-                                JOptionPane.showMessageDialog(null, "Something went wrong. Please try again.", "Course Registration", JOptionPane.ERROR_MESSAGE);
-                            }
+                        catch(Exception e) {
+                            return "Something went wrong. Please try again.";
                         }
                     }
-                    
-                    return "";
                 case 10:
-                    // Get search name from user
-                    instructorName = JOptionPane.showInputDialog("Type an Instructor's Name: ");
-                    // Get array of possible instructors matching the search name
-                    instructorSearchResults = CourseRegistrationSystem.searchForInstructor(instructorName);
+                    // Assign advisee
+                    instructor = findInstructor();
+                    student = findStudent();
                     
-                    if (instructorSearchResults.length == 0) {
-                        // No results were found
-                        JOptionPane.showMessageDialog(null, instructorName + " was not found.", "Instructor Search", JOptionPane.WARNING_MESSAGE);
-                    } else {
-                        if (instructorSearchResults.length > 1) {
-                            // If multiple instructors match the search name, ask the user to pick one
-                            selection = JOptionPane.showOptionDialog(null, "Select one of the following instructors: ", "Instructor Search", WIDTH, HEIGHT, null, instructorSearchResults,null);
-                            instructor = instructorSearchResults[selection];
-                        } else {
-                            // If only one instructor matches the search name, set instructor
-                            instructor = instructorSearchResults[0];
-                        }
-                        
-                        // Get student name from user
-                        studentName = JOptionPane.showInputDialog(null, "Type a Student's Name:");
-                        // Get array of possible students matching the search name
-                        studentSearchResults = CourseRegistrationSystem.searchForStudent(studentName);
-                        
-                        if (studentSearchResults.length == 0) {
-                            // No results were found
-                            JOptionPane.showMessageDialog(null, studentName + " was not found", "Student Search", JOptionPane.WARNING_MESSAGE);
-                        } else {
-                            if (studentSearchResults.length > 1) {
-                                // If multiple students match the search name, ask the user to pick one
-                                selection = JOptionPane.showOptionDialog(null, "Select one of the following students:", "Student Search", WIDTH, HEIGHT, null,studentSearchResults, null);
-                                student = studentSearchResults[selection];
-                            } else {
-                                // If only one student matches the search name, set student
-                                student = studentSearchResults[0];
-                            }
-                        }
-                        
-                        if (studentSearchResults.length >= 1) {
-                            try {
-                                // Add student to list of instructor advisees
-                                instructor.addAdvisee(student);
-                                // Set instructor as advisor for student
-                                student.advisor=instructor;
-                                JOptionPane.showMessageDialog(null, instructor.Name + " was successfully added as an advisor for " + student.Name);
+                    if (instructor != null && student != null) {
+                        try {
+                            // Add student to list of instructor advisees
+                            instructor.addAdvisee(student);
+                            
+                            // Set instructor as advisor for student
+                            student.advisor=instructor;
+                            
+                            return instructor.Name + " was successfully added as an advisor for " + student.Name;
                             }
                             catch(Exception e) {
-                                JOptionPane.showMessageDialog(null, "Something went wrong. Please try again.", "Add advior", JOptionPane.ERROR_MESSAGE);
+                                return "Something went wrong. Please try again.";
                             }
                         }
-                    } 
-                    
-                    return "";
                 default:
                     return "How did you get this message";
             }
