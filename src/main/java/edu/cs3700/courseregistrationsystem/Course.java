@@ -52,6 +52,11 @@ public class Course {
         for(int index = 0; index < list;index++)
             System.out.println("Courses: " + CourseList[index]);
     }
+    
+    // toString used to select one course when searching for a course
+    public String toString() {
+        return getname();
+    }
 }
 
 
