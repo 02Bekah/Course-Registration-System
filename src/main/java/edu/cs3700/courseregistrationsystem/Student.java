@@ -50,4 +50,22 @@ public class Student extends Person {
     public String toString() {
         return this.Name + ", DOB: " + DateOfBirth.toString();
     }
+    
+    public String studentCoursesToString() {
+        if (CourseList == null) {
+            return "N/A";
+        } else {
+            // Get names of all courses
+            String str = "";
+            for (Course inst: CourseList) {
+                if (inst instanceof Course) {
+                    str += inst.getname() + ", ";
+                }
+            }
+
+            // Trim comma from end
+            //str = str.substring(0, (CourseList.length-2));
+            return str;
+        }
+    }
 }
