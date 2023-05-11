@@ -17,11 +17,11 @@ public class Instructor extends Person {
     // Constructor with only person attributes
     public Instructor(String name, Date dateOfBirth, Program program, Course[] courseList) {
         this(name, dateOfBirth, program, courseList, null);
-    } // End constructor
+    }
     
     // Name, date of birth constructor
-    public Instructor(String name, Date dateOfBirth) {
-        this(name, dateOfBirth, null, null, null);
+    public Instructor(String name, Date dateOfBirth, Program program) {
+        this(name, dateOfBirth, program, null, null);
     } // End constructor
     
     // Default constructor
@@ -69,6 +69,42 @@ public class Instructor extends Person {
     @Override
     public String toString() {
         return Name + ", DOB: " + DateOfBirth.toString();
+    }
+    
+    public String instructorCoursesToString() {
+        if (CourseList == null) {
+            return "N/A";
+        } else {
+            // Get names of all courses
+            String str = "";
+            for (Course inst: CourseList) {
+                if (inst instanceof Course) {
+                    str += inst.getname() + ", ";
+                }
+            }
+
+            // Trim comma from end
+            //str = str.substring(0, (CourseList.length-2));
+            return str;
+        }
+    }
+    
+    public String instructorAdviseesToString() {
+        if (advisees == null) {
+            return "N/A";
+        } else {
+            // Get names of all advisees
+            String str = "";
+            for (Student inst: advisees) {
+                if (inst instanceof Student) {
+                    str += inst.toString() + ", ";
+                }
+            }
+
+            // Trim comma from end
+            //str = str.substring(0, advisees.length-2);
+            return str;
+        }
     }
     
 }
