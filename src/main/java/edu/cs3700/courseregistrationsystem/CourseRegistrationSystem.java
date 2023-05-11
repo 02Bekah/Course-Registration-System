@@ -130,4 +130,33 @@ public class CourseRegistrationSystem {
         return studentSearchResults;
     } // End method searchForStudent
     
+    public static void updateStudentList(Student[] newList){
+        students = new Student[newList.length];
+        
+        for (int i = 0; i<newList.length; i++){
+            students[i] = newList[i];
+        }
+    }
+    
+    public static void updateProgramList(Program[] newList){
+        programs = new Program[newList.length];
+        
+        for (int i = 0; i<newList.length; i++){
+            programs[i] = newList[i];
+        }
+    }
+    public static void updateCourseList(Course[] newList){
+        courses = new Course[newList.length];
+        
+        for (int i = 0; i<newList.length; i++){
+            courses[i] = newList[i];
+        }
+    }
+    public static void updateInstructorList(Instructor[] newList){
+        instructors = new Instructor[newList.length];
+        
+        for (int i = 0; i<newList.length; i++){
+            instructors[i] = newList[i];
+        }
+    }
 } // End class CourseRegistrationSystem
