@@ -45,4 +45,9 @@ public class Student extends Person {
     public void addAdvisor(Instructor instructor){
         advisor = instructor;
     }
+    
+    // toString used to select one student when searching for a student
+    public String toString() {
+        return this.Name + ", DOB: " + DateOfBirth.toString();
+    }
 }
