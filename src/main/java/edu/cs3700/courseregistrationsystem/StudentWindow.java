@@ -56,7 +56,7 @@ public class StudentWindow extends JFrame{
         // Array of Jlabels for advisors
         JLabel[] studentAdvisorLbls = new JLabel[searchResults.length];
         
-        
+        /*
         // Initialize title labels
         studentNameTitleLbl = new JLabel("Name");
         studentNameTitleLbl.setFont(studentTitleFont);
@@ -71,37 +71,37 @@ public class StudentWindow extends JFrame{
         studentAdvisorTitleLbl = new JLabel("Advior:");
         studentAdvisorTitleLbl.setFont(studentTitleFont);
         
-        
         add(studentNameTitleLbl);
         add(studentDOBTitleLbl);
         add(studentProgramTitleLbl);
         add(studentCourseTitleLbl);
         add(studentStartDateTitleLbl);
         add(studentAdvisorTitleLbl);
+        */
         
         for (int i=0; i<searchResults.length; i++) {
             // Initialize instructor name label
-            studentNameLbls[i] = new JLabel(searchResults[i].Name);
+            studentNameLbls[i] = new JLabel("Name: " + searchResults[i].Name);
             studentNameLbls[i].setFont(studentInfoFont);
             add(studentNameLbls[i]);
             
             // Initialize instructor date of birth label
-            studentDOBLbls[i] = new JLabel(searchResults[i].DateOfBirth.toString());
+            studentDOBLbls[i] = new JLabel("Date of Birth: " + searchResults[i].DateOfBirth.toString());
             studentDOBLbls[i].setFont(studentInfoFont);
             add(studentDOBLbls[i]);
             
             // Initialize instructor program label
-            studentProgramLbls[i] = new JLabel(searchResults[i].CurrentProgram.Name);
+            studentProgramLbls[i] = new JLabel("Program: " + searchResults[i].CurrentProgram.Name);
             studentProgramLbls[i].setFont(studentInfoFont);
             add(studentProgramLbls[i]);
             
             // Initialize instructor courses label
-            studentCoursesLbls[i] = new JLabel(searchResults[i].studentCoursesToString());
+            studentCoursesLbls[i] = new JLabel("Courses: " + searchResults[i].studentCoursesToString());
             studentCoursesLbls[i].setFont(studentInfoFont);
             add(studentCoursesLbls[i]);
             
             // Initialize intrsuctor advisees label
-            studentAdvisorLbls[i] = new JLabel(searchResults[i].advisor.toString());
+            studentAdvisorLbls[i] = new JLabel("Advisor: " + searchResults[i].advisor.toString());
             studentAdvisorLbls[i].setFont(studentInfoFont);
             add(studentAdvisorLbls[i]);
         }
