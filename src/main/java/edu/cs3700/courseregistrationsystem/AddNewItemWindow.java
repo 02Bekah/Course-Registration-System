@@ -243,15 +243,7 @@ public class AddNewItemWindow extends JFrame{
                     
                     newProgram.setNum_credits(numOfCredits);
                     
-                    var tempProgramList = new Program[CourseRegistrationSystem.programs.length + 1];
-                    
-                    for (int i = 0; i < CourseRegistrationSystem.programs.length; i++){
-                        tempProgramList[i] = CourseRegistrationSystem.programs[i];
-                    }
-                    
-                    tempProgramList[tempProgramList.length-1] = newProgram;
-                    
-                    CourseRegistrationSystem.updateProgramList(tempProgramList); 
+                    CourseRegistrationSystem.updateProgramList(newProgram); 
                     
                     JOptionPane.showMessageDialog(null, "Program added.");
                     closeWindow();
@@ -295,20 +287,9 @@ public class AddNewItemWindow extends JFrame{
                     day = Integer.parseInt(splitDate[1]);
                     year = Integer.parseInt(splitDate[2]);
                     newStudent.startDate = new Date(day, month, year);
+                                      
                     
-                    var newStudentList = new Student[CourseRegistrationSystem.students.length + 1];
-                    
-                    for (int i = 0; i<CourseRegistrationSystem.students.length; i++){
-                        newStudentList[i] = CourseRegistrationSystem.students[i];
-                    }
-                    
-                    newStudentList[newStudentList.length-1] = newStudent;
-                    
-                    CourseRegistrationSystem.updateStudentList(newStudentList);
-                    
-                    for (var student: CourseRegistrationSystem.students){
-                        System.out.println(student.Name);
-                    }
+                    CourseRegistrationSystem.updateStudentList(newStudent);
                     
                     JOptionPane.showMessageDialog(rootPane, newStudent.Name + " has been added.");
                     closeWindow();
@@ -346,14 +327,8 @@ public class AddNewItemWindow extends JFrame{
                         break;
                     }
                     
-                    var tempInstructorList = new Instructor[CourseRegistrationSystem.instructors.length +1];
-                    for (int i = 0; i < CourseRegistrationSystem.instructors.length; i++){
-                        tempInstructorList[i] = CourseRegistrationSystem.instructors[i];
-                    }
                     
-                    tempInstructorList[tempInstructorList.length-1] = newInstructor;
-                    
-                    CourseRegistrationSystem.updateInstructorList(tempInstructorList);
+                    CourseRegistrationSystem.updateInstructorList(newInstructor);
                     
                     JOptionPane.showMessageDialog(null, "Instructor Added.");
                     
@@ -381,15 +356,7 @@ public class AddNewItemWindow extends JFrame{
                         break;
                     }
                     
-                    var tempCourseList = new Course[CourseRegistrationSystem.courses.length + 1];
-                    
-                    for (int i = 0; i < CourseRegistrationSystem.courses.length; i++){
-                        tempCourseList[i] = CourseRegistrationSystem.courses[i];
-                    }
-                    
-                    tempCourseList[tempCourseList.length -1] = newCourse;
-                    
-                    CourseRegistrationSystem.updateCourseList(tempCourseList);
+                    CourseRegistrationSystem.updateCourseList(newCourse);
                     
                     closeWindow();
                     break;
