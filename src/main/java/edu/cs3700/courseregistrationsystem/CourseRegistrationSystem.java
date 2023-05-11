@@ -30,11 +30,11 @@ public class CourseRegistrationSystem {
     }
     
     public static void populateInstructor() {
-        instructors[0] = new Instructor("Jackson Blakely", new Date(05,1,1990));
-        instructors[1] = new Instructor("Clementine Blakely", new Date(22,2,1992));
-        instructors[2] = new Instructor("Joshua Clark", new Date(18,9,1950));
-        instructors[3] = new Instructor("Ashley Miller", new Date(30,12,1969));
-        instructors[4] = new Instructor("Ashley Miller", new Date(01,9,1985));
+        instructors[0] = new Instructor("Jackson Blakely", new Date(05,1,1990), programs[0]);
+        instructors[1] = new Instructor("Clementine Blakely", new Date(22,2,1992), programs[1]);
+        instructors[2] = new Instructor("Joshua Clark", new Date(18,9,1950), programs[1], new Course[] {courses[3]});
+        instructors[3] = new Instructor("Ashley Miller", new Date(30,12,1969), programs[0], new Course[] {courses[0]});
+        instructors[4] = new Instructor("Ashley Miller", new Date(01,9,1985), programs[1]);
     }
     
     public static void populateStudent() {
