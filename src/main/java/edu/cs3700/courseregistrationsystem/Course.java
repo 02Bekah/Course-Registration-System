@@ -57,6 +57,42 @@ public class Course {
     public String toString() {
         return getname();
     }
+    
+    public String coursePrerequisitesToString() {
+        if (CourseList == null) {
+            return "N/A";
+        } else {
+            // Get names of all courses
+            String str = "";
+            for (Course inst: CourseList) {
+                if (inst instanceof Course) {
+                    str += inst.getname() + ", ";
+                }
+            }
+
+            // Trim comma from end
+            //str = str.substring(0, (CourseList.length-2));
+            return str;
+        }
+    }
+    
+    public String courseStudentsRegisteredToString() {
+        if (StudentList == null) {
+            return "N/A";
+        } else {
+            // Get names of all advisees
+            String str = "";
+            for (Student inst: StudentList) {
+                if (inst instanceof Student) {
+                    str += inst.toString() + ", ";
+                }
+            }
+
+            // Trim comma from end
+            //str = str.substring(0, advisees.length-2);
+            return str;
+        }
+    }
 }
 
 
