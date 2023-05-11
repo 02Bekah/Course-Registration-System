@@ -34,8 +34,20 @@ public class Student extends Person {
     
     //Add Course
     public void addCourse(Course course){
-        Course[] c = new Course[CourseList.length + 1];
-        c = CourseList;
+         if (CourseList != null) {
+            // Increase size by creating temp array
+            Course[] temp = new Course[CourseList.length + 1];
+            // Copy into temp array
+            for (int i=0; i<CourseList.length; i++) {
+                temp[i] = CourseList[i];
+            }
+            // Add new course to temp array
+            temp[CourseList.length] = course;
+            // Set temp as CourseList
+            CourseList = temp;
+        } else {
+            CourseList = new Course[] {course};
+        }
     }
     //Add Start Date
     public void addStartDate(Date date){
