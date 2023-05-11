@@ -14,6 +14,10 @@ public class Course {
     public Instructor Instructor;
     public Student StudentList[];
 
+    public Course(){
+        
+    }
+    
     public Course(String n, Program p, Instructor i){
         setName(n);
         Program = p;
