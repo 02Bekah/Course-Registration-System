@@ -13,7 +13,10 @@ public class CourseRegistrationSystem {
     public static Student[] students = new Student[100];
     public static Course[] courses = new Course[100];
     public static Program[] programs = new Program[100];
-    
+    public static int instructorCount = 5;
+    public static int studentCount = 2;
+    public static int courseCount = 4;
+    public static int programCount = 2;
 
     public static void main(String[] args) {
         MainWindow mWindow = new MainWindow();
@@ -130,33 +133,24 @@ public class CourseRegistrationSystem {
         return studentSearchResults;
     } // End method searchForStudent
     
-    public static void updateStudentList(Student[] newList){
-        students = new Student[newList.length];
+    public static void updateStudentList(Student newStudent){
+        students[studentCount] = newStudent;
+        studentCount++;
         
-        for (int i = 0; i<newList.length; i++){
-            students[i] = newList[i];
-        }
     }
     
-    public static void updateProgramList(Program[] newList){
-        programs = new Program[newList.length];
-        
-        for (int i = 0; i<newList.length; i++){
-            programs[i] = newList[i];
-        }
+    public static void updateProgramList(Program newProgram){
+        programs[programCount] = newProgram;
+        programCount++;
     }
-    public static void updateCourseList(Course[] newList){
-        courses = new Course[newList.length];
+    public static void updateCourseList(Course newCourse){
+        courses[courseCount] = newCourse;
+        courseCount++;
         
-        for (int i = 0; i<newList.length; i++){
-            courses[i] = newList[i];
-        }
     }
-    public static void updateInstructorList(Instructor[] newList){
-        instructors = new Instructor[newList.length];
+    public static void updateInstructorList(Instructor newInstructor){
+        instructors[instructorCount] = newInstructor;
+        instructorCount++;
         
-        for (int i = 0; i<newList.length; i++){
-            instructors[i] = newList[i];
-        }
     }
 } // End class CourseRegistrationSystem
