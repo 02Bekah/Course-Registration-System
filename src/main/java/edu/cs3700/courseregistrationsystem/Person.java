@@ -18,6 +18,12 @@ public class Person {
         
     }
     
+    public Person(String name, Date dob, Program program){
+        Name = name;
+        DateOfBirth = dob;
+        CurrentProgram = program;
+    }
+    
     public Person(String name, Date dob, Program currentProgram, Course[] courseList){
         Name = name;
         DateOfBirth = dob;
