@@ -75,6 +75,7 @@ public class CourseWindow extends JFrame{
         // Array of JLabels for students
         JLabel[] students = new JLabel[courseSearchResults.length];
         
+        /*
         nameTitle = new JLabel("Name of Course:");
         //text1 = new JTextField(20);
         programTitle = new JLabel("Program:");
@@ -93,27 +94,28 @@ public class CourseWindow extends JFrame{
         //add(text3);
         add(prerequisiteTitle);
         add(studentsTitle);
+        */
         
         for (int i=0; i<courseSearchResults.length; i++) {
             if (courseSearchResults[i].getname() != null) {
-                names[i] = new JLabel(courseSearchResults[i].getname());
+                names[i] = new JLabel("Name: " +courseSearchResults[i].getname());
                 add(names[i]);
             }
             
             if (courseSearchResults[i].Program != null) {
-                programs[i] = new JLabel(courseSearchResults[i].Program.Name);
+                programs[i] = new JLabel("Program: " +courseSearchResults[i].Program.Name);
                 add(programs[i]);
             }
             
             if (courseSearchResults[i].Instructor != null) {
-                instructors[i] = new JLabel(courseSearchResults[i].Instructor.toString());
+                instructors[i] = new JLabel("Instructor: " +courseSearchResults[i].Instructor.toString());
                 add(instructors[i]);
             }
             
-            prerequisites[i] = new JLabel(courseSearchResults[i].coursePrerequisitesToString());
+            prerequisites[i] = new JLabel("Prerequisite: " +courseSearchResults[i].coursePrerequisitesToString());;
             add(prerequisites[i]);
             
-            students[i] = new JLabel(courseSearchResults[i].courseStudentsRegisteredToString());
+            students[i] = new JLabel("Students: " +courseSearchResults[i].courseStudentsRegisteredToString());
             add(students[i]);
             
         }
