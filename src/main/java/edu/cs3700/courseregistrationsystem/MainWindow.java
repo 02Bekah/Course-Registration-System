@@ -145,7 +145,7 @@ public class MainWindow extends JFrame{
                 // Open InstructorWindow to display information
                 // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
                 instructorWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                instructorWindow.setSize(200, 400);
+                instructorWindow.setSize(195, 400);
                 instructorWindow.setVisible(true);
             }
         }
@@ -197,7 +197,7 @@ public class MainWindow extends JFrame{
                 // Open Course Window to display information
                 // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
                 CourseWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                CourseWindow.setSize(900, 900);
+                CourseWindow.setSize(195, 400);
                 CourseWindow.setVisible(true);
             }
         }
@@ -249,7 +249,7 @@ public class MainWindow extends JFrame{
                 // Open student Window to display information
                 // NOTE: Set JFrame.DISPOSE_ON_CLOSE instead of JFRAME.EXIT_ON_CLOSE to avoid exiting program
                 StudentWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                StudentWindow.setSize(900, 900);
+                StudentWindow.setSize(195, 400);
                 StudentWindow.setVisible(true);
             }
         }
@@ -285,14 +285,8 @@ public class MainWindow extends JFrame{
         
         private String getMessageText(){
             // Initialize variables with default values
-            //String instructorName = "", courseName = "", studentName = "";
-            //int selection = 0;
-            //Instructor[] instructorSearchResults = null;
-            //Course[] courseSearchResults = null;
             Instructor instructor = null;
-            //Course[] courseResults = null;
             Course course = null;
-            //Student[] studentSearchResults = null;
             Student student = null;
         
             switch(btnClickedNum){
@@ -305,6 +299,7 @@ public class MainWindow extends JFrame{
                 case 4:
                     return "Course Added";
                 case 5:
+                    findStudents();
                     return "Student Search Completed";
                 case 6:
                     findInstructors();
@@ -313,7 +308,24 @@ public class MainWindow extends JFrame{
                      findCourses();
                     return "Course Search Completed";
                 case 8:
-                    return "Student registered";
+                    student = findStudent();
+                    course = findCourse();
+                    
+                    if (student != null && course != null) {
+                        try {
+                            // Add course to student courseList
+                            student.addCourse(course);
+                            // Add student to course studentList
+                            course.addStudent(student);
+                            
+                            return student.Name + " was successfully registered for " + course.getname();
+                        }
+                        catch(Exception e) {
+                            return "Something went wrong. Please try again.";
+                        }
+                    } else {
+                        return "Something went wrong. Please try again.";
+                    }
                 case 9:
                     // Register an instructor with a course
                     
@@ -330,7 +342,9 @@ public class MainWindow extends JFrame{
                         }
                         catch(Exception e) {
                             return "Something went wrong. Please try again.";
-                        }
+                        } 
+                    } else {
+                        return "Something went wrong. Please try again.";
                     }
                 case 10:
                     // Assign advisee
