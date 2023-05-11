@@ -291,13 +291,37 @@ public class MainWindow extends JFrame{
         
             switch(btnClickedNum){
                 case 1:
-                    return "Program Added";
+                    Program newProgram = new Program();
+                    AddNewItemWindow addNewProgramWindow = new AddNewItemWindow(newProgram);
+                    
+                    addNewProgramWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    addNewProgramWindow.setSize(900,300);
+                    addNewProgramWindow.setVisible(true);
+                    return "";
                 case 2:
-                    return "Student Added";
+                    Student newStudent = new Student();
+                    AddNewItemWindow addNewStudentWindow = new AddNewItemWindow(newStudent);
+                    
+                    addNewStudentWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    addNewStudentWindow.setSize(1000,300);
+                    addNewStudentWindow.setVisible(true);
+                    return "";
                 case 3:
-                    return "Instructor Added";
+                    Instructor newInstructor = new Instructor();
+                    AddNewItemWindow addNewInstructorWindow = new AddNewItemWindow(newInstructor);
+                    
+                    addNewInstructorWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    addNewInstructorWindow.setSize(1000, 300);
+                    addNewInstructorWindow.setVisible(true);
+                    return "";
                 case 4:
-                    return "Course Added";
+                    Course newCourse = new Course();
+                    AddNewItemWindow addNewCourseWindow = new AddNewItemWindow(newCourse);
+                    
+                    addNewCourseWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    addNewCourseWindow.setSize(1000, 300);
+                    addNewCourseWindow.setVisible(true);
+                    return "";
                 case 5:
                     findStudents();
                     return "Student Search Completed";
