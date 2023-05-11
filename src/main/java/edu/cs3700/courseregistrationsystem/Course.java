@@ -42,6 +42,23 @@ public class Course {
             CourseList = new Course[] {course};
         }
     } // End method addCourse
+         
+    public void addStudent(Student student) {
+        if (StudentList != null) {
+            // Increase size by creating temp array
+            Student[] temp = new Student[StudentList.length + 1];
+            // Copy into temp array
+            for (int i=0; i<StudentList.length; i++) {
+                temp[i] = StudentList[i];
+            }
+            // Add new student to temp array
+            temp[StudentList.length] = student;
+            // Set temp as StudentList
+            StudentList = temp;
+        } else {
+            StudentList = new Student[] {student};
+        }
+    } // End method addStudent
 
     
     public void listStudent(int list){
